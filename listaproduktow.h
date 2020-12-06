@@ -1,25 +1,10 @@
 #include <string>
+#include "produkty.h"
 
 #ifndef LISTAPRODUKTOW_H
 #define LISTAPRODUKTOW_H
 
-extern const int MAKS_LB_PRODUKTOW = 100;
 
-class Produkt
-{
-    public:
-        Produkt(std::string nazwa, int ilosc, double cena);
-        void ustawNazwe(std::string n);
-        std::string podajNazwe();
-        void ustawIlosc(int il);
-        int podajIlosc();
-        void ustawCene(double c);
-        double podajCene();
-    protected:
-        std::string nazwa;
-        int ilosc;
-        double cena;
-};
 
 class ListaProduktow
 {
@@ -37,3 +22,4 @@ class ListaProduktow
 
 
 #endif // LISTAPRODUKTOW_H
+

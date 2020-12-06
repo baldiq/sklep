@@ -7,17 +7,17 @@
 using namespace std;
 
 // 1. Poprawki w komentarzach
-// 2. RÄ™czna refaktoryzacja kodu, polegajÄ…ca na
-// przeksztaÅ‚ceniu programu w wersjÄ™ wielomoduÅ‚owÄ…
+// 2. Rêczna refaktoryzacja kodu, polegaj¹ca na
+// przekszta³ceniu programu w wersjê wielomodu³ow¹
 // tzn.
-// - tworzymy moduÅ‚ listaproduktow.h i listaproduktow.cpp
-// - do tego moduÅ‚u przenosimy klasy Produkt i ListaProduktow.
+// - tworzymy modu³ listaproduktow.h i listaproduktow.cpp
+// - do tego modu³u przenosimy klasy Produkt i ListaProduktow.
 // Wszystkie funkcje zdefiniowane w ciele klasy zmienamy
 // na funkcje zdefiniowane w pliku listaproduktow.cpp
-// W ciele klasy pozostawiamy tylko deklaracje funkcji skÅ‚adowych (prototypy)
-// Tworzymy osobne program gÅ‚Ã³wny, zawierajÄ…cy funkcjÄ™ main.
-// W funkcji zostawiamy na razie kod testujÄ…cy klasÄ™ Produkt i ListaProduktow
-// Podobno czegoÅ› brakuje i trzeba uzupeÅ‚niÄ‡.
+// W ciele klasy pozostawiamy tylko deklaracje funkcji sk³adowych (prototypy)
+// Tworzymy osobne program g³ówny, zawieraj¹cy funkcjê main.
+// W funkcji zostawiamy na razie kod testuj¹cy klasê Produkt i ListaProduktow
+// Podobno czegoœ brakuje i trzeba uzupe³niæ.
 // EDIT: brakuje destruktorow i usuwania obiektow
 //
 //
