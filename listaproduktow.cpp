@@ -4,7 +4,9 @@
 // METODY PRODUKT
 
 
-Produkt::Produkt(nazwa, ilosc, cena)
+using namespace std;
+
+Produkt::Produkt(string nazwa, int ilosc, double cena)
 {
     if(nazwa.empty())
         Produkt::ustawNazwe("Nieznany");
@@ -14,46 +16,45 @@ Produkt::Produkt(nazwa, ilosc, cena)
         Produkt::ustawCene(0);
 }
 
-Produkt::ustawNazwe(string n)
+void Produkt::ustawNazwe(string n)
 {
     nazwa = n;
 }
 
-Produkt::podajNazwe()
+string Produkt::podajNazwe()
 {
     return nazwa;
 }
 
-Produkt::ustawIlosc(int il)
+void Produkt::ustawIlosc(int il)
 {
     ilosc = il;
 }
 
-Produkt::podajIlosc()
+int Produkt::podajIlosc()
 {
     return ilosc;
 }
 
-Produkt::ustawCene(double c)
+void Produkt::ustawCene(double c)
 {
     cena = c;
 }
 
-Produkt::podajCene()
+double Produkt::podajCene()
 {
     return cena;
 }
 
 
-
 // METODY LISTA PRODUKTOW
 
 
-  ListaProduktow::ListaProduktow() : liczbaProduktow(0)
+ListaProduktow::ListaProduktow() : liczbaProduktow(0)
 {
 }
 
-ListaProduktow::dopiszProdukt(string nazwa, int ilosc, double cena)
+bool ListaProduktow::dopiszProdukt(string nazwa, int ilosc, double cena)
 {
     if(liczbaProduktow < MAKS_LB_PRODUKTOW - 1)
     {
@@ -64,7 +65,7 @@ ListaProduktow::dopiszProdukt(string nazwa, int ilosc, double cena)
         return false;
 }
 
-ListaProduktow::dopiszProdukt(Produkt * produkt)
+bool ListaProduktow::dopiszProdukt(Produkt * produkt)
 {
     if(liczbaProduktow < MAKS_LB_PRODUKTOW - 1)
     {
@@ -86,8 +87,7 @@ ListaProduktow::Produkt * pobierzProdukt(int nrProduktu)
     }
 }
 
-ListaProduktow::podajLiczbeProduktow()
+int ListaProduktow::podajLiczbeProduktow()
 {
     return liczbaProduktow;
 }
-
