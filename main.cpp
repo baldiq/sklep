@@ -1,7 +1,8 @@
 #include <iostream>
 #include <cstdlib>
 #include "listaproduktow.h"
-
+#include "produkty.h"
+#include "zapisodczytlistyplikow.h"
 
 
 using namespace std;
@@ -126,11 +127,16 @@ int main()
 {
     ListaProduktow lista;
 
+    ZapisOdczytListyPlikow zapisOdczyt;
+
+    Produkt p("gwizdek do lodzi podwodnej", 1, 100000);
+
+
     lista.dopiszProdukt("Dysk SSD", 20, 400.0);
     lista.dopiszProdukt(new Produkt("Pendrive", 30, 40.0));
     lista.dopiszProdukt("Monitor", 40, 800.0);
     lista.dopiszProdukt(new Produkt("Sluchawki", 50, 200.0));
-
+    lista.dopiszProdukt(&p);
 
     for (int i = 0; i < lista.podajLiczbeProduktow(); ++i)
     {
@@ -140,6 +146,10 @@ int main()
         cout << endl << wskRoboczy->podajCene() << endl;
     }
 
+    zapisOdczyt.zapisz(&lista, "produkty.txt");
+    zapisOdczyt.odczytaj(&lista, "produkty.txt");
 
-    return EXIT_SUCCESS;
+
+
+    return 0;
 }

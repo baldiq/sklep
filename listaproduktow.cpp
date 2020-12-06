@@ -1,5 +1,5 @@
 #include "listaproduktow.h"
-#include "produkty.h"
+
 
 
 using namespace std;
@@ -12,18 +12,26 @@ ListaProduktow::ListaProduktow() : liczbaProduktow(0)
 {
 }
 
+ListaProduktow::~ListaProduktow()
+{
+
+    for(int i = 0; i < liczbaProduktow; ++i)
+        delete produkty[i];
+}
+
 bool ListaProduktow::dopiszProdukt(string nazwa, int ilosc, double cena)
 {
-    if(liczbaProduktow < MAKS_LB_PRODUKTOW - 1)
-    {
-        produkty[liczbaProduktow++] = new Produkt(nazwa, ilosc, cena);
-        return true;
-    }
-    else
-        return false;
+
+    Produkt * produkt = new Produkt(nazwa, ilosc, cena);
+    return ListaProduktow::dodajDoListy(produkt);
 }
 
 bool ListaProduktow::dopiszProdukt(Produkt * produkt)
+{
+    return ListaProduktow::dodajDoListy(produkt);
+}
+
+bool ListaProduktow::dodajDoListy(Produkt * produkt)
 {
     if(liczbaProduktow < MAKS_LB_PRODUKTOW - 1)
     {
@@ -33,7 +41,8 @@ bool ListaProduktow::dopiszProdukt(Produkt * produkt)
     else
         return false;
 }
-ListaProduktow::Produkt * pobierzProdukt(int nrProduktu)
+
+Produkt * ListaProduktow::pobierzProdukt(int nrProduktu)
 {
     if(nrProduktu < liczbaProduktow && nrProduktu >= 0)
     {

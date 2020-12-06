@@ -15,6 +15,10 @@ Produkt::Produkt(string nazwa, int ilosc, double cena)
         Produkt::ustawCene(0);
 }
 
+Produkt::~Produkt()
+{
+
+}
 void Produkt::ustawNazwe(string n)
 {
     nazwa = n;

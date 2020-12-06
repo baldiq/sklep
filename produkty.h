@@ -3,12 +3,13 @@
 #ifndef PRODUKTY_H
 #define PRODUKTY_H
 
-extern const int MAKS_LB_PRODUKTOW = 100;
+const int MAKS_LB_PRODUKTOW = 100;
 
 class Produkt
 {
     public:
         Produkt(std::string nazwa, int ilosc, double cena);
+        ~Produkt();
         void ustawNazwe(std::string n);
         std::string podajNazwe();
         void ustawIlosc(int il);
