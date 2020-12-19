@@ -61,29 +61,52 @@ bool ZapisOdczytListyPlikow::odczytaj(ListaProduktow * lista, char nazwa[])
 
 bool ZapisOdczytListyPlikow_test::odczytaj(ListaProduktow * lista, char nazwa[])
 {
-    string line;
-    ifstream myfile (nazwa);
-    if (myfile.is_open())
-    {
-        while ( getline (myfile,line) )
+      ifstream plik(nazwa);
+      if(!plik.is_open())
+        return false;
+      else
+      {
+        char buforLinii[256];
+        plik.getline(buforLinii, 255);
+        while(plik.good())
         {
-            cout << line << '\n';
+          char nazwa[256];
+          int ilosc;
+          double cena;
+          char * element;
+
+          element = strtok(buforLinii, ",;\t\n");
+          strcpy(nazwa, element);
+          element = strtok(0, ",;\t\n");
+          ilosc = atoi(element);
+          element = strtok(0, ",;\t\n");
+          cena = atof(element);
+          lista->dopiszProdukt(nazwa, ilosc, cena);
+
+          plik.getline(buforLinii, 256);
         }
-        myfile.close();
+        plik.close();
+        return true;
+      }
     }
-    else cout << "Unable to open file";
-}
 
 
 bool ZapisOdczytListyPlikow_test::zapisz(ListaProduktow * lista, char nazwa[])
-{
-    ofstream myfile ("example.txt");
-    if (myfile.is_open())
-    {
-        myfile << "This is a line.\n";
-        myfile << "This is another line.\n";
-        myfile.close();
+ {
+      ofstream plik(nazwa, ofstream::out | std::ofstream::trunc);
+      if(!plik.is_open())
+        return false;
+      else
+      {
+        for(int i = 0; i < lista->podajLiczbeProduktow(); ++i)
+        {
+          Produkt *produkt = lista->pobierzProdukt(i);
+          plik << produkt->nazwa.c_str() << ';';
+          plik << produkt->ilosc << ';';
+          plik << produkt->cena << '\n';
+        }
+        plik.close();
+        return true;
     }
-    else cout << "Unable to open file";
 }
 

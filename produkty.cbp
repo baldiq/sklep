@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -35,8 +37,14 @@
 		<Unit filename="listaproduktow.cpp" />
 		<Unit filename="listaproduktow.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="managerlistyproduktow.cpp" />
+		<Unit filename="managerlistyproduktow.h" />
 		<Unit filename="produkty.cpp" />
 		<Unit filename="produkty.h" />
+		<Unit filename="widoklistyproduktow.cpp" />
+		<Unit filename="widoklistyproduktow.h" />
+		<Unit filename="widokproduktu.cpp" />
+		<Unit filename="widokproduktu.h" />
 		<Unit filename="zapisodczytlistyplikow.cpp" />
 		<Unit filename="zapisodczytlistyplikow.h" />
 		<Extensions>

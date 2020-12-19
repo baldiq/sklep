@@ -114,6 +114,7 @@ using namespace std;
 //            }
 //        }
 //
+
 //        int podajLiczbeProduktow()
 //        {
 //            return liczbaProduktow;
@@ -125,6 +126,9 @@ using namespace std;
 
 int main()
 {
+
+    ManagerListyProduktow manager;\
+
     ListaProduktow lista;
 
     ZapisOdczytListyPlikow zapisOdczyt;
