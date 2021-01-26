@@ -1,9 +1,18 @@
 #include "widokproduktu.h"
 #include "produkty.h"
+#include <iostream>
 
-static void WidokProduktu::pokazProdukt(Produkty *p)
+using namespace std;
+
+void WidokProduktu::pokazProdukt(Produkt *p)
 {
-    cout << endl << "Nazwa: " << p->nazwa;
-    cout << endl << "Ilosc: " << p->ilosc;
-    cout << endl << "Cena: "  << p->cena;
+    cout << endl << "Nazwa: " << p->podajNazwe();
+    cout << endl << "Ilosc: " << p->podajIlosc();
+    cout << endl << "Cena: "  << p->podajCene();
+}
+void WidokProduktu::pokazProduktWLinii(Produkt *p)
+{
+    cout << p->podajNazwe() << ' ';
+    cout << p->podajIlosc() << ' ';
+    cout << p->podajCene() << ' ' << endl;
 }

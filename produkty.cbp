@@ -47,10 +47,6 @@
 		<Unit filename="widokproduktu.h" />
 		<Unit filename="zapisodczytlistyplikow.cpp" />
 		<Unit filename="zapisodczytlistyplikow.h" />
-		<Extensions>
-			<code_completion />
-			<envvars />
-			<debugger />
-		</Extensions>
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

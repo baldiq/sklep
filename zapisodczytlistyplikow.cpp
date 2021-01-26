@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
-
+#include "produkty.h"
 
 using namespace std;
 
@@ -101,9 +101,9 @@ bool ZapisOdczytListyPlikow_test::zapisz(ListaProduktow * lista, char nazwa[])
         for(int i = 0; i < lista->podajLiczbeProduktow(); ++i)
         {
           Produkt *produkt = lista->pobierzProdukt(i);
-          plik << produkt->nazwa.c_str() << ';';
-          plik << produkt->ilosc << ';';
-          plik << produkt->cena << '\n';
+//          plik << produkt->podajNazwe(nazwa.c_str()) << ';';
+          plik << produkt->podajIlosc() << ';';
+          plik << produkt->podajCene() << '\n';
         }
         plik.close();
         return true;
