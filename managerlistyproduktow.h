@@ -10,7 +10,8 @@ class ManagerListyProduktow
         ~ManagerListyProduktow();
         void pokazMenu();
         void pokazListeProduktow();
-        int dodajProdukt(std::string nazwa, int ilosc, double cena);
+        void zapiszListe();
+        bool dodajProdukt();
         void zarzadzaj();
     private:
         ListaProduktow lista;

@@ -15,7 +15,5 @@ int main()
 
     manager.zarzadzaj();
 
-    cin.get();
-
     return 0;
 }

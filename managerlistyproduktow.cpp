@@ -8,18 +8,18 @@ using namespace std;
 ManagerListyProduktow::ManagerListyProduktow()
 {
     cout << "Zarzadzam lista produktow" << endl;
-    ZapisOdczytListyPlikow zapisOdczyt;
-    zapisOdczyt.odczytaj(&lista, "produkty.txt");
 }
 
 ManagerListyProduktow::~ManagerListyProduktow()
 {
-
-    ZapisOdczytListyPlikow zapisOdczyt;
-    zapisOdczyt.zapisz(&lista, "produkty.txt");
     cout << "Nacisnij enter by zakonczyc...";
     cin.ignore();
     cin.get();
+}
+void ManagerListyProduktow::zapiszListe()
+{
+    ZapisOdczytListyPlikow zapisOdczyt;
+    zapisOdczyt.zapisz(&lista, "produkty.txt");
 }
 
 void ManagerListyProduktow::pokazMenu()
@@ -31,13 +31,26 @@ void ManagerListyProduktow::pokazMenu()
 
 void ManagerListyProduktow::pokazListeProduktow()
 {
-    WidokListyProduktow widok;
-    widok.pokazProduktyWTabeli(&lista);
+    ZapisOdczytListyPlikow zapisOdczyt;
+    zapisOdczyt.odczytaj(&lista, "produkty.txt");
+//    WidokListyProduktow widok;
+//    widok.pokazProdukty(&lista);
 }
 
-int ManagerListyProduktow::dodajProdukt(string nazwa, int ilosc, double cena)
+bool ManagerListyProduktow::dodajProdukt()
 {
-    ListaProduktow lista;
+    string nazwa;
+    int ilosc;
+    double cena;
+
+
+    cout << "\nPodaj nazwe produktu: ";
+    cin >> nazwa;
+    cout << "\nPodaj ilosc produktu: ";
+    cin >> ilosc;
+    cout << "\nPodaj cene produktu: ";
+    cin >> cena;
+
     return lista.dopiszProdukt(nazwa, ilosc, cena);
 }
 
@@ -45,9 +58,6 @@ void ManagerListyProduktow::zarzadzaj()
 {
     const int KONIEC = 0;
     int idOpcji = 10;
-    string nazwa;
-    int ilosc;
-    double cena;
 
     do
     {
@@ -56,16 +66,15 @@ void ManagerListyProduktow::zarzadzaj()
 
         switch(idOpcji)
         {
-            case 1: pokazListeProduktow();
-                break;
-            case 2:
-                cout << "\nPodaj nazwe produktu: "; cin >> nazwa;
-                cout << "\nPodaj ilosc produktu: "; cin >> ilosc;
-                cout << "\nPodaj cene produktu: "; cin >> cena;
-                dodajProdukt(nazwa, ilosc, cena);
-                break;
-            case 3: ;
-                break;
+        case 1:
+            pokazListeProduktow();
+            break;
+        case 2:
+            dodajProdukt();
+            break;
+        case 3:
+            ;
+            break;
         }
     }
     while (idOpcji != KONIEC);
