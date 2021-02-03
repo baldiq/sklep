@@ -21,8 +21,8 @@ bool ZapisOdczytListyPlikow::zapisz(ListaProduktow * lista, char nazwa[])
         {
             Produkt * produkt = lista->pobierzProdukt(i);
             fprintf(plik, "%s;%d;%.2f\n", produkt->podajNazwe().c_str(),
-                                        produkt->podajIlosc(),
-                                        produkt->podajCene() );
+                    produkt->podajIlosc(),
+                    produkt->podajCene() );
         }
         fclose(plik);
 
@@ -61,49 +61,34 @@ bool ZapisOdczytListyPlikow::odczytaj(ListaProduktow * lista, char nazwa[])
 
 bool ZapisOdczytListyPlikow_test::odczytaj(ListaProduktow * lista, char nazwa[])
 {
-      ifstream plik(nazwa);
-      if(!plik.is_open())
-        return false;
-      else
-      {
-        char buforLinii[256];
-        plik.getline(buforLinii, 255);
-        while(plik.good())
+    string linia;
+    ifstream plik ("produkty.txt");
+    if (plik.is_open())
+    {
+        while ( getline (plik, linia) )
         {
-          char nazwa[256];
-          int ilosc;
-          double cena;
-          char * element;
-
-          element = strtok(buforLinii, ",;\t\n");
-          strcpy(nazwa, element);
-          element = strtok(0, ",;\t\n");
-          ilosc = atoi(element);
-          element = strtok(0, ",;\t\n");
-          cena = atof(element);
-          lista->dopiszProdukt(nazwa, ilosc, cena);
-
-          plik.getline(buforLinii, 256);
+            cout << linia << '\n';
         }
         plik.close();
-        return true;
-      }
     }
+
+    else cout << "Nie mozna otworzyc pliku";
+}
 
 
 bool ZapisOdczytListyPlikow_test::zapisz(ListaProduktow * lista, char nazwa[])
- {
-      ofstream plik(nazwa, ofstream::out | std::ofstream::trunc);
-      if(!plik.is_open())
+{
+    ofstream plik(nazwa, ofstream::out | std::ofstream::trunc);
+    if(!plik.is_open())
         return false;
-      else
-      {
+    else
+    {
         for(int i = 0; i < lista->podajLiczbeProduktow(); ++i)
         {
-          Produkt *produkt = lista->pobierzProdukt(i);
-//          plik << produkt->podajNazwe(nazwa.c_str()) << ';';
-          plik << produkt->podajIlosc() << ';';
-          plik << produkt->podajCene() << '\n';
+            Produkt *produkt = lista->pobierzProdukt(i);
+            plik << produkt->podajNazwe() << ';';
+            plik << produkt->podajIlosc() << ';';
+            plik << produkt->podajCene() << '\n';
         }
         plik.close();
         return true;

@@ -2,6 +2,7 @@
 #define MANAGERLISTYPRODUKTOW_H
 
 #include "listaproduktow.h"
+#include "zapisodczytlistyplikow.h"
 
 class ManagerListyProduktow
 {
@@ -11,10 +12,12 @@ class ManagerListyProduktow
         void pokazMenu();
         void pokazListeProduktow();
         void zapiszListe();
-        bool dodajProdukt();
+        int dodajProdukt();
+        int edytujProdukt();
         void zarzadzaj();
-    private:
+    protected:
         ListaProduktow lista;
+        ZapisOdczytListyPlikow zapisOdczyt;
 
 };
 

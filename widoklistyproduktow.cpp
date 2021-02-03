@@ -1,7 +1,6 @@
 #include <iostream>
 #include "widoklistyproduktow.h"
-#include "listaproduktow.h"
-#include "widokproduktu.h"
+
 
 using namespace std;
 

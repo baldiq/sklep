@@ -1,7 +1,5 @@
 #include "managerlistyproduktow.h"
 #include <iostream>
-#include "zapisodczytlistyplikow.h"
-#include "widoklistyproduktow.h"
 
 using namespace std;
 
@@ -18,26 +16,23 @@ ManagerListyProduktow::~ManagerListyProduktow()
 }
 void ManagerListyProduktow::zapiszListe()
 {
-    ZapisOdczytListyPlikow zapisOdczyt;
     zapisOdczyt.zapisz(&lista, "produkty.txt");
 }
 
 void ManagerListyProduktow::pokazMenu()
 {
-    cout << "Dostepne opcje\n\t1. Pokaz produkty\n\t2. Dodaj produkt\n\t";
+    cout << "Dostepne opcje\n\t1. Pokaz produkty\n\t2. Dodaj produkt\n\t3. Edytuj produkt\n\t4. Zapisz liste produktow\n\t";
     cout << "\n\t 0. Koniec";
     cout << endl << " >> ";
 }
 
 void ManagerListyProduktow::pokazListeProduktow()
 {
-    ZapisOdczytListyPlikow zapisOdczyt;
+
     zapisOdczyt.odczytaj(&lista, "produkty.txt");
-//    WidokListyProduktow widok;
-//    widok.pokazProdukty(&lista);
 }
 
-bool ManagerListyProduktow::dodajProdukt()
+int ManagerListyProduktow::dodajProdukt()
 {
     string nazwa;
     int ilosc;
@@ -51,7 +46,22 @@ bool ManagerListyProduktow::dodajProdukt()
     cout << "\nPodaj cene produktu: ";
     cin >> cena;
 
-    return lista.dopiszProdukt(nazwa, ilosc, cena);
+    lista.dopiszProdukt(nazwa, ilosc, cena);
+}
+
+int ManagerListyProduktow::edytujProdukt()
+{
+    int nrProduktu;
+    cout << "Ktory produkt chcesz edytowac? "; cin >> nrProduktu;
+
+    if (nrProduktu > lista.podajLiczbeProduktow())
+    {
+        cout << "Jest " << lista.podajLiczbeProduktow() << " produktow, a Ty wybrales produkt " << nrProduktu << "! Podaj inny numer";
+        edytujProdukt();
+    }
+
+
+
 }
 
 void ManagerListyProduktow::zarzadzaj()
@@ -73,7 +83,10 @@ void ManagerListyProduktow::zarzadzaj()
             dodajProdukt();
             break;
         case 3:
-            ;
+            edytujProdukt();
+            break;
+        case 4:
+            zapiszListe();
             break;
         }
     }

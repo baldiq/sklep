@@ -7,6 +7,8 @@ class WidokProduktu
     public:
         static void pokazProdukt(Produkt *p);
         static void pokazProduktWLinii(Produkt *p);
+    protected:
+        Produkt p;
 };
 
 #endif WIDOKPRODUKTU_H
