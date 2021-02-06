@@ -10,27 +10,24 @@ ManagerListyProduktow::ManagerListyProduktow()
 
 ManagerListyProduktow::~ManagerListyProduktow()
 {
+    zapisOdczyt.zapisz(&lista, "produkty.txt");
     cout << "Nacisnij enter by zakonczyc...";
     cin.ignore();
     cin.get();
 }
-void ManagerListyProduktow::zapiszListe()
-{
-    zapisOdczyt.zapisz(&lista, "produkty.txt");
-}
 
 void ManagerListyProduktow::pokazMenu()
 {
-    cout << "Dostepne opcje\n\t1. Pokaz produkty\n\t2. Dodaj produkt\n\t3. Edytuj produkt\n\t4. Zapisz liste produktow\n\t";
-    cout << "\n\t 0. Koniec";
+    cout << "Dostepne opcje\n\t1. Dodaj produkt\n\t2. Pokaz produkty\n\t3. Edytuj produkt\n\t4. Usun produkty\n\t";
+    cout << "\n\t 99. Koniec";
     cout << endl << " >> ";
 }
 
 void ManagerListyProduktow::pokazListeProduktow()
 {
-
-    zapisOdczyt.odczytaj(&lista, "produkty.txt");
+    widokListy.pokazProduktyWTabeli(&lista);
 }
+
 
 int ManagerListyProduktow::dodajProdukt()
 {
@@ -52,21 +49,26 @@ int ManagerListyProduktow::dodajProdukt()
 int ManagerListyProduktow::edytujProdukt()
 {
     int nrProduktu;
-    cout << "Ktory produkt chcesz edytowac? "; cin >> nrProduktu;
+    cout << "Ktory produkt chcesz edytowac?"; cin >> nrProduktu;
+    widokListy.pokazProdukty(&lista);
 
-    if (nrProduktu > lista.podajLiczbeProduktow())
-    {
-        cout << "Jest " << lista.podajLiczbeProduktow() << " produktow, a Ty wybrales produkt " << nrProduktu << "! Podaj inny numer";
-        edytujProdukt();
-    }
+    Produkt * produkt = lista.pobierzProdukt(nrProduktu-1);
+    lista.usunProdukt(nrProduktu);
+    this->dodajProdukt();
+}
 
+void ManagerListyProduktow::usunProdukt()
+{
+    int nrProduktu;
+    cout << "Wybierz produkt, maksymalny dostepny produkt to: " << lista.podajLiczbeProduktow() << ". "; cin >> nrProduktu;
 
-
+    Produkt * produkt = lista.pobierzProdukt(nrProduktu);
+    lista.usunProdukt(nrProduktu);
 }
 
 void ManagerListyProduktow::zarzadzaj()
 {
-    const int KONIEC = 0;
+    const int KONIEC = 99;
     int idOpcji = 10;
 
     do
@@ -77,16 +79,16 @@ void ManagerListyProduktow::zarzadzaj()
         switch(idOpcji)
         {
         case 1:
-            pokazListeProduktow();
+            dodajProdukt();
             break;
         case 2:
-            dodajProdukt();
+            pokazListeProduktow();
             break;
         case 3:
             edytujProdukt();
             break;
         case 4:
-            zapiszListe();
+            usunProdukt();
             break;
         }
     }

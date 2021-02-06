@@ -1,16 +1,21 @@
 #ifndef WIDOKLISTYPRODUKTOW_H
 #define WIDOKLISTYPRODUKTOW_H
 #include "listaproduktow.h"
-#include "widokproduktu.h"
+#include "produkty.h"
 
 class WidokListyProduktow
 {
     public:
-        void pokazProdukty(ListaProduktow *lista, char naglowek[] = "");
-        void pokazProduktyWTabeli(ListaProduktow *lista, char naglowek[] = "");
-    protected:
-        ListaProduktow lista;
-        WidokProduktu widok;
+        void pokazProdukty(ListaProduktow *lista);
+        void pokazProduktyWTabeli(ListaProduktow *lista);
+};
+
+
+class WidokProduktu
+{
+    public:
+        static void pokazProdukt(Produkt *p);
+        static void pokazProduktWLinii(Produkt *p);
 };
 
 #endif // WIDOKLISTYPRODUKTOW_H_INCLUDED

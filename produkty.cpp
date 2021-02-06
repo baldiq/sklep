@@ -9,10 +9,16 @@ Produkt::Produkt(string nazwa, int ilosc, double cena)
 {
     if(nazwa.empty())
         Produkt::ustawNazwe("Nieznany");
+    else
+        Produkt::ustawNazwe(nazwa);
     if(ilosc < 0)
         Produkt::ustawIlosc(0);
+    else
+        Produkt::ustawIlosc(ilosc);
     if(cena < 0)
         Produkt::ustawCene(0);
+    else
+        Produkt::ustawCene(cena);
 }
 
 Produkt::~Produkt()
@@ -21,7 +27,7 @@ Produkt::~Produkt()
 }
 void Produkt::ustawNazwe(string n)
 {
-    nazwa = n;
+    this->nazwa = n;
 }
 
 string Produkt::podajNazwe()
@@ -31,7 +37,7 @@ string Produkt::podajNazwe()
 
 void Produkt::ustawIlosc(int il)
 {
-    ilosc = il;
+    this->ilosc = il;
 }
 
 int Produkt::podajIlosc()
@@ -41,7 +47,7 @@ int Produkt::podajIlosc()
 
 void Produkt::ustawCene(double c)
 {
-    cena = c;
+    this->cena = c;
 }
 
 double Produkt::podajCene()

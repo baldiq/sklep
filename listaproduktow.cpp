@@ -1,11 +1,6 @@
 #include "listaproduktow.h"
 
-
-
 using namespace std;
-
-
-// METODY LISTA PRODUKTOW
 
 
 ListaProduktow::ListaProduktow() : liczbaProduktow(0)
@@ -57,4 +52,10 @@ Produkt * ListaProduktow::pobierzProdukt(int nrProduktu)
 int ListaProduktow::podajLiczbeProduktow()
 {
     return liczbaProduktow;
+}
+
+bool ListaProduktow::usunProdukt(int nrProduktu)
+{
+    delete produkty[nrProduktu];
+    liczbaProduktow -= 1;
 }

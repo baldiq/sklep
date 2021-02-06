@@ -3,6 +3,7 @@
 
 #include "listaproduktow.h"
 #include "zapisodczytlistyplikow.h"
+#include "widoklistyproduktow.h"
 
 class ManagerListyProduktow
 {
@@ -11,13 +12,15 @@ class ManagerListyProduktow
         ~ManagerListyProduktow();
         void pokazMenu();
         void pokazListeProduktow();
-        void zapiszListe();
         int dodajProdukt();
         int edytujProdukt();
         void zarzadzaj();
+        void usunProdukt();
     protected:
         ListaProduktow lista;
         ZapisOdczytListyPlikow zapisOdczyt;
+        WidokListyProduktow widokListy;
+        WidokProduktu widokProduktu;
 
 };
 
